@@ -36,14 +36,13 @@ pipeline {
             }
           }
         }
-
+        
         stage("Build / Test - JDK15") {
           agent { node { label 'linux' } }
           steps {
             container( 'jetty-build' ) {
               timeout( time: 120, unit: 'MINUTES' ) {
-                mavenBuild( "jdk15", "clean install -T3 -Djacoco.skip=true ", "maven3",
-                            [[parserName: 'Maven'], [parserName: 'Java']])
+                mavenBuild( "jdk15", "clean install -T3 -Djacoco.skip=true ",[[parserName: 'Maven'], [parserName: 'Java']])
               }
             }
           }
@@ -73,7 +72,6 @@ pipeline {
             }
           }
         }
-
       }
     }
   }
