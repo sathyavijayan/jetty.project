@@ -120,6 +120,7 @@ def mavenBuild(jdk, cmdline, mvnName, consoleParsers) {
     }
     finally
     {
+      archiveArtifacts artifacts: '**/demos/embedded/target/**',allowEmptyArchive: true
       junit testResults: '**/target/surefire-reports/*.xml,**/target/invoker-reports/TEST*.xml,**/h2spec-reports/*.xml'
       if(consoleParsers!=null){
         warnings consoleParsers: consoleParsers
