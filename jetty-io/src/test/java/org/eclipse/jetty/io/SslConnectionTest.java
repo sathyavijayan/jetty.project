@@ -305,6 +305,8 @@ public class SslConnectionTest
     @Test
     public void testRenegotiate() throws Exception
     {
+        System.err.printf("runtime.vm = %s %s%n", System.getProperty("java.vendor"), System.getProperty("java.runtime.version"));
+
         startSSL();
         try (SSLSocket client = newClient())
         {
